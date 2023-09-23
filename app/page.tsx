@@ -1,30 +1,45 @@
+// "use client"
+
+
 import Image from 'next/image';
-import { bluzelle, API, BluzelleConfig } from 'bluzelle';
+// import { bluzelle, API, BluzelleConfig } from 'bluzelle';
+import {bluzelle, API, BluzelleConfig} from "bluzelle";
+import { log } from 'console';
 
+import {useEffect, useState} from "react";
 
-const api: BluzelleConfig = {
-  mnemonic: "demand daughter mention alley change inside source social estate antique select wrist",
-  uuid: Date.now().toString(),
+const params: BluzelleConfig = {
+  mnemonic: "essence energy object margin early between cereal curtain imitate link sentence practice",
+  uuid: '20fc19d4-7c9d-4b5c-9578-8cedd756e0ea',
   endpoint: 'https://a.client.sentry.net.bluzelle.com:1317',
-  chain_id: 'bluzelle-9',
+  // chainId: 'bluzelle-9'
 };
 
-const bz: API = bluzelle(api);
+const api: API = bluzelle(params);
 
+//  bluzelle1pd8k9wdu9t52snppdkqgep6u7ea5ym7kfagckh
 
-console.log(bz); 
+api.account('bluzelle1pd8k9wdu9t52snppdkqgep6u7ea5ym7kfagckh')
+	.then((info) => console.log({info}))
+	.catch((error) => console.log(error));
 
+  api.count()
+	.then((info) => console.log({info}))
+	.catch((error) => console.log(error));
 
-async function  createSomekey() {
-  // 
+async function  createSomekey() {  
 
-  const res = bz.keyValues()
-	.then((info) => { console.log(info); })
-	.catch((error) => { console.log(error); });
-  // .create("somekey", "somevalue", { 'gas_price': 0.002 })
-  // console.log(bz);
   
-  return  res
+  
+  console.log(api.getAddress()); 
+
+  // const res = await api.getBNT();
+	// // .then((info) => { console.log({info}); })
+	// // .catch((error) => { console.log(error); });
+  // // .create("somekey", "somevalue", { 'gas_price': 0.002 })
+  // console.log(JSON.stringify(res));
+  
+  // return  res
 }
 
 export default async function Home() {
